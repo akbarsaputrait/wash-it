@@ -29,22 +29,23 @@
 					</a>
 					<div class="mt-30 mt-lg-0 ml-30 pb-60 relative inner">
 						<a href="#" class="d-block link color-main f-22 semibold title"
-							>M&amp;M Jar</a
+							>Laundry Shop Name</a
 						>
 						<div class="mb-15 f-14 semibold sp-20 color-heading price">
-							$13.99
+							Price/kg
 						</div>
 						<div class="color-heading text-adaptive">
-							Flavors include: Original, Spearmint, Wintergreen, Mint <br />
-							Bliss, Wild Blueberry Twist.
+							Laundry Shop location or Laundry Shop advantages
 						</div>
 						<div
 							class="mt-30 mt-lg-0 absolute d-flex flex-wrap align-items-baseline buttons"
 						>
-							<a href="#" class="mr-10 btn sm border-action-2 medium f-16"
-								>Purchase</a
-							>
-							<a href="#" class="link action-2 medium f-16">Add to Bag</a>
+							<b-button pill variant="outline-secondary" class="mr-10 sm">
+								<router-link to="/laundry_detail" class="medium"
+									>Details</router-link
+								>
+							</b-button>
+							<a href="#" class="link action-2 medium f-16">Booking Now</a>
 						</div>
 					</div>
 				</div>
@@ -76,10 +77,12 @@
 						<div
 							class="mt-30 mt-lg-0 absolute d-flex flex-wrap align-items-baseline buttons"
 						>
-							<a href="#" class="mr-10 btn sm border-action-2 medium f-16"
-								>Purchase</a
-							>
-							<a href="#" class="link action-2 medium f-16">Add to Bag</a>
+							<b-button pill variant="outline-secondary" class="mr-10 sm">
+								<router-link to="/laundry_detail" class="medium"
+									>Details</router-link
+								>
+							</b-button>
+							<a href="#" class="link action-2 medium f-16">Booking Now</a>
 						</div>
 					</div>
 				</div>
@@ -110,10 +113,12 @@
 						<div
 							class="mt-30 mt-lg-0 absolute d-flex flex-wrap align-items-baseline buttons"
 						>
-							<a href="#" class="mr-10 btn sm border-action-2 medium f-16"
-								>Purchase</a
-							>
-							<a href="#" class="link action-2 medium f-16">Add to Bag</a>
+							<b-button pill variant="outline-secondary" class="mr-10 sm">
+								<router-link to="/laundry_detail" class="medium"
+									>Details</router-link
+								>
+							</b-button>
+							<a href="#" class="link action-2 medium f-16">Booking Now</a>
 						</div>
 					</div>
 				</div>
@@ -145,10 +150,12 @@
 						<div
 							class="mt-30 mt-lg-0 absolute d-flex flex-wrap align-items-baseline buttons"
 						>
-							<a href="#" class="mr-10 btn sm border-action-2 medium f-16"
-								>Purchase</a
-							>
-							<a href="#" class="link action-2 medium f-16">Add to Bag</a>
+							<b-button pill variant="outline-secondary" class="mr-10 sm">
+								<router-link to="/laundry_detail" class="medium"
+									>Details</router-link
+								>
+							</b-button>
+							<a href="#" class="link action-2 medium f-16">Booking Now</a>
 						</div>
 					</div>
 				</div>

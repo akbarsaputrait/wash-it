@@ -45,7 +45,13 @@
 				</div>
 			</div>
 		</b-container>
-		<section class="ecommerce_25 bg-dark pt-100 pb-100 text-center">
+		<section
+			class="ecommerce_25 pt-100 pb-100 text-center bg-laundry"
+			:style="{
+				backgroundImage:
+					'url(' + require('@/assets/landing/img/laundry1.jpg') + ')',
+			}"
+		>
 			<div class="container px-xl-0">
 				<div class="col-12 pt-70 pb-75 bg-light radius10 inner">
 					<div
@@ -111,5 +117,8 @@
 	.banner {
 		margin-top: 50px;
 		height: 950px;
+	}
+	.bg-laundry {
+		background-size: cover;
 	}
 </style>

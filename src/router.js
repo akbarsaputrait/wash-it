@@ -48,18 +48,18 @@ const routes = [{
             import ( /* webpackChunkName: "user" */ './views/user/index'),
         beforeEnter: AuthUserRequired,
         children: [{
-                path: '/product/:id',
-                name: 'product',
+                path: '/laundry_detail/',
+                name: 'LaundryDetail',
                 props: true,
                 component: () =>
-                    import ( /* webpackChunkName: "user" */ './views/user/Product.vue')
+                    import ( /* webpackChunkName: "user" */ './views/user/LaundryDetail.vue')
             },
             {
-                path: '/cart',
-                name: 'Cart',
+                path: '/order',
+                name: 'OrderForm',
                 props: true,
                 component: () =>
-                    import ( /* webpackChunkName: "user" */ './views/user/ShoppingCart.vue')
+                    import ( /* webpackChunkName: "user" */ './views/user/OrderForm.vue')
             },
             {
                 path: '/success',
