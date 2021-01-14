@@ -3,6 +3,7 @@ import App from './App'
 
 // BootstrapVue add
 import './assets/css/sass/landing.scss'
+import './assets/css/sass/style.scss'
 
 import {
     BootstrapVue,

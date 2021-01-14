@@ -1,4 +1,3 @@
-
 import './assets/css/vendor/dropzone.min.css'
 import './assets/css/vendor/bootstrap.min.css'
 import './assets/css/vendor/bootstrap.rtl.only.min.css'
@@ -17,11 +16,11 @@ import "./main";
 let color = defaultColor
 
 if (localStorage.getItem('themeColor')) {
-  color = localStorage.getItem('themeColor')
+    color = localStorage.getItem('themeColor')
 }
 let render = () => {
-    import('./assets/css/sass/themes/piaf.' + color + '.scss').then(() => require('./main'))
+    import ('./assets/css/sass/themes/piaf.' + color + '.scss').then(() => require('./main'))
 }
 
 render()
-/* if you want single color remove this section:multicolor */
+    /* if you want single color remove this section:multicolor */
