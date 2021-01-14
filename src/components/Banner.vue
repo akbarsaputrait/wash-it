@@ -70,12 +70,16 @@
 					>
 						Free Shipping on Each Purchase
 					</h2>
-					<span
+					<div
 						data-aos-duration="600"
 						data-aos="fade-down"
 						data-aos-delay="300"
-						><a href="#" class="mb-40 btn lg action-2">Go to Market</a></span
+						class="py-3"
 					>
+						<b-button pill variant="outline-secondary">
+							<a href="#">Get Started</a>
+						</b-button>
+					</div>
 					<div
 						class="mx-auto mw-470 color-heading text-adaptive"
 						data-aos-duration="600"
