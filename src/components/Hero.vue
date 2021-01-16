@@ -3,12 +3,12 @@
   <section class="hero-section">
     <carousel class="hero-items" :items="1" :nav="false" :autoplay="true">
       <div
-          class="single-hero-items set-bg"
+          class="single-hero-items set-bg bg-caption"
           :style="{ backgroundImage: 'url(' + require('@/assets/landing/img/laundry4.jpg') + ')' }"
       >
         <div class="container">
           <div class="row">
-            <div class="col-lg-5 bg-caption">
+            <div class="col-lg-5 ">
               <span>Welcome to</span>
               <h1 class="text-white">WashIT</h1>
               <p class="text-white">
@@ -21,12 +21,12 @@
         </div>
       </div>
       <div
-          class="single-hero-items set-bg"
+          class="single-hero-items set-bg bg-caption"
           :style="{ backgroundImage: 'url(' + require('@/assets/landing/img/laundry2.jpg') + ')' }"
       >
         <div class="container">
           <div class="row">
-            <div class="col-lg-5 bg-caption">
+            <div class="col-lg-5">
               <span>WashIT</span>
               <h1 class="text-white">Black Friday</h1>
               <p class="text-white">
@@ -39,12 +39,12 @@
         </div>
       </div>
       <div
-          class="single-hero-items set-bg"
+          class="single-hero-items set-bg bg-caption"
           :style="{ backgroundImage: 'url(' + require('@/assets/landing/img/laundry3.jpg') + ')' }"
       >
         <div class="container">
           <div class="row">
-            <div class="col-lg-5 bg-caption">
+            <div class="col-lg-5 ">
               <span>WashIT</span>
               <h1>Black Friday</h1>
               <p class="text-white">
@@ -74,6 +74,8 @@ export default {
 <style scoped>
 .bg-caption {
   background-color: rgba(0, 0, 0, .5);
-  padding: 2em;
+  width: 100%;
+  height: 100%;
 }
+
 </style>
