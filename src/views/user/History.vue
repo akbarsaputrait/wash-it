@@ -14,7 +14,7 @@
       <tbody>
       <tr v-for="(transaction,index) in userTransactions" :key ="transaction.id">
         <th scope="row">{{index + 1}}</th>
-        <td>{{ transaction.customer_name }}</td>
+        <td>{{ transaction.laundry_shop.name }}</td>
         <td>{{ transaction.createdAt }}</td>
         <td>
           <b-button @click="changeStatusTransaction">{{transaction.transaction_status}}</b-button>
@@ -43,7 +43,7 @@ export default {
     return {
       isLoading: true,
       userTransactions: [],
-      user: {}
+      user: {},
     }
   },
   created () {
@@ -60,10 +60,12 @@ export default {
       }
       this.isLoading = false
       try {
-        const res = await axios.get('user/' + this.user.id)
+        const res = await axios.get('transaction/')
 
         if (res && res.hasOwnProperty('data')) {
-          this.userTransactions = res.data.transactions
+          this.userTransactions = res.data.filter(data => {
+            return data.userId === this.user.id
+          })
         }
       } catch (error) {
         this.$notify('danger', 'Something Bad Happened', error, { duration: 5000 })

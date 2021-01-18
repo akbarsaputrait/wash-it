@@ -53,8 +53,8 @@
                   </b-button>
                   <div class="cart-hover">
                     <div class="select-button">
-                      <a href="/user" class="primary-btn checkout-btn mb-2"
-                      >Profil</a
+                      <router-link to="/history" class="primary-btn checkout-btn mb-2"
+                      >History</router-link
                       >
                       <a
                           href="#"
