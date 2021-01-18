@@ -6,30 +6,21 @@
       <thead>
       <tr>
         <th scope="col">#</th>
-        <th scope="col">Laundry Shop</th>
+        <th scope="col">Customer Name</th>
         <th scope="col">Order Date</th>
         <th scope="col">Verify Action</th>
       </tr>
       </thead>
       <tbody>
-      <tr>
-        <th scope="row">1</th>
-        <td>Mark</td>
-        <td>Otto</td>
-        <td>@mdo</td>
+      <tr v-for="(transaction,index) in userTransactions" :key ="transaction.id">
+        <th scope="row">{{index + 1}}</th>
+        <td>{{ transaction.customer_name }}</td>
+        <td>{{ transaction.createdAt }}</td>
+        <td>
+          <b-button @click="changeStatusTransaction">{{transaction.transaction_status}}</b-button>
+        </td>
       </tr>
-      <tr>
-        <th scope="row">2</th>
-        <td>Jacob</td>
-        <td>Thornton</td>
-        <td>@fat</td>
-      </tr>
-      <tr>
-        <th scope="row">3</th>
-        <td>Larry</td>
-        <td>the Bird</td>
-        <td>@twitter</td>
-      </tr>
+
       </tbody>
     </table>
 
@@ -40,6 +31,7 @@
 <script>
 import HeaderShayna from '@/components/Header.vue'
 import Footer from '@/components/Footer.vue'
+import axios from 'axios'
 
 export default {
   name: 'History',
@@ -49,9 +41,35 @@ export default {
   },
   data () {
     return {
-      carts: [],
-      order: {}
+      isLoading: true,
+      userTransactions: [],
+      user: {}
     }
-  }
+  },
+  created () {
+    this.fetchLaundryShop()
+  },
+  methods: {
+    async fetchLaundryShop () {
+      if (localStorage.getItem('user')) {
+        try {
+          this.user = JSON.parse(localStorage.getItem('user'))
+        } catch (e) {
+          localStorage.removeItem('carts')
+        }
+      }
+      this.isLoading = false
+      try {
+        const res = await axios.get('user/' + this.user.id)
+
+        if (res && res.hasOwnProperty('data')) {
+          this.userTransactions = res.data.transactions
+        }
+      } catch (error) {
+        this.$notify('danger', 'Something Bad Happened', error, { duration: 5000 })
+      }
+    }
+  },
+
 }
 </script>

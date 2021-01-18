@@ -36,7 +36,7 @@
                           id="namaLengkap"
                           aria-describedby="namaHelp"
                           placeholder="Masukan Nama"
-                          v-model="order.name"
+                          v-model="order.customer_name"
                       />
                     </div>
                     <div class="form-group">
@@ -57,22 +57,21 @@
                           id="noHP"
                           aria-describedby="noHPHelp"
                           placeholder="Masukan No. HP"
-                          v-model="order.number"
+                          v-model="order.contact_person"
                       />
                     </div>
                     <div class="form-group">
                       <label for="namaLengkap">Additional Info</label>
                       <input
-                          type="email"
+                          type="text"
                           class="form-control"
-                          id="emailAddress"
                           aria-describedby="emailHelp"
-                          placeholder="Masukan Email"
-                          v-model="order.email"
+                          placeholder="Masukan keterangan tambahan"
+                          v-model="order.additional_info"
                       />
                     </div>
-                    <button class="btn btn-primary" @click="checkout">
-                      kirim
+                    <button class="btn btn-primary" @click="checkoutOrder">
+                      Booking
                     </button>
                   </form>
                 </div>
@@ -85,14 +84,10 @@
                 <div class="proceed-checkout text-left">
                   <ul>
                     <li class="subtotal mt-3">
-                      Subtotal <span>${{ totalHarga }}.00</span>
+                      Laundry Shop Name<span>{{laundrySelect.name}}</span>
                     </li>
                     <li class="subtotal mt-3">
-                      Postal Fee / kilometer<span>8000</span>
-                    </li>
-                    <li class="subtotal mt-3">
-                      Total Biaya
-                      <span>Rp.{{ totalBiaya }}0</span>
+                      Postal Fee / kilometer<span>4000</span>
                     </li>
                     <li class="subtotal mt-3">Payment <span>COD</span></li>
                     <li class="subtotal mt-3">
@@ -128,8 +123,9 @@ export default {
   },
   data () {
     return {
-      carts: [],
-      order: {}
+      order: {},
+      laundrySelect: {},
+      user: {}
     }
   },
   methods: {
@@ -138,44 +134,31 @@ export default {
       const parsed = JSON.stringify(this.carts)
       localStorage.setItem('carts', parsed)
     },
-    checkout: function () {
-      let productIds = this.carts.map(function (product) {
-        return product.id
-      })
-      let checkoutData = {
-        name: this.order.name,
-        email: this.order.email,
+    checkoutOrder: function () {
+      let orderData = {
+        customer_name: this.order.customer_name,
+        contact_person: this.order.contact_person,
         address: this.order.address,
-        number: this.order.number,
-        transaction_total: this.totalBiaya,
+        additional_info: this.order.additional_info,
+        postal_fee: 4000,
         transaction_status: 'PENDING',
-        transaction_details: productIds
+        laundryShopId: this.laundrySelect.id,
+        userId: this.user.id
       }
       axios
-        .post('http://localhost:3000/pesanan', checkoutData)
+        .post('transaction', orderData)
         .then(() => {
-          this.$router.push({ path: '/success' })
+          console.log('data success created')
         })
-        .catch((err) => console.log(err, checkoutData))
-    }
-  },
-  computed: {
-    totalHarga () {
-      return this.carts.reduce(function (items, data) {
-        return items + data.price
-      }, 0)
-    },
-    pajak () {
-      return (this.totalHarga * 10) / 100
-    },
-    totalBiaya () {
-      return this.totalHarga + this.pajak
+        .catch((err) => console.log(err))
     }
   },
   mounted () {
-    if (localStorage.getItem('carts')) {
+    if (localStorage.getItem('laundrySelect') && localStorage.getItem('user')) {
       try {
-        this.carts = JSON.parse(localStorage.getItem('carts'))
+        this.laundrySelect = JSON.parse(localStorage.getItem('laundrySelect'))
+        this.user = JSON.parse(localStorage.getItem('user'))
+        console.log(this.user.id)
       } catch (e) {
         localStorage.removeItem('carts')
       }
