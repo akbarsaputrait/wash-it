@@ -123,9 +123,9 @@
                             </tbody>
                           </table>
                           <b-button>
-                            <b-link @click="booking" to="/order">
+                            <a href="#" @click="booking" >
                               Booking Now
-                            </b-link>
+                            </a>
                           </b-button>
                         </div>
                       </div>
@@ -171,6 +171,7 @@ export default {
     booking () {
       const parsed = JSON.stringify(this.laundryShop)
       localStorage.setItem('laundrySelect', parsed)
+      this.$router.push({ path: '/order' })
     }
   }
 }

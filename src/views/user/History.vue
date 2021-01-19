@@ -6,9 +6,9 @@
       <thead>
       <tr>
         <th scope="col">#</th>
-        <th scope="col">Customer Name</th>
+        <th scope="col">Laundry Shop Name</th>
         <th scope="col">Order Date</th>
-        <th scope="col">Verify Action</th>
+        <th scope="col">Transaction Status / Verify </th>
       </tr>
       </thead>
       <tbody>

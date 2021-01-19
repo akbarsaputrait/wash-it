@@ -37,6 +37,7 @@
                           aria-describedby="namaHelp"
                           placeholder="Masukan Nama"
                           v-model="order.customer_name"
+                          required
                       />
                     </div>
                     <div class="form-group">
@@ -46,6 +47,7 @@
                           id="alamatLengkap"
                           rows="3"
                           v-model="order.address"
+                          required
                       ></textarea>
                     </div>
 
@@ -68,11 +70,12 @@
                           aria-describedby="emailHelp"
                           placeholder="Masukan keterangan tambahan"
                           v-model="order.additional_info"
+
                       />
                     </div>
-                    <button class="btn btn-primary" @click="checkoutOrder">
+                    <a href="#" class="btn btn-primary" @click="checkoutOrder">
                       Booking
-                    </button>
+                    </a>
                   </form>
                 </div>
               </div>
@@ -94,7 +97,7 @@
                       Courier Name <span>Shayna</span>
                     </li>
                   </ul>
-                  <a @click="checkout" href="/history" class="proceed-btn"
+                  <a href="/history" class="proceed-btn"
                   >Check Order</a
                   >
                 </div>
@@ -129,11 +132,6 @@ export default {
     }
   },
   methods: {
-    removeCart (x) {
-      this.carts.splice(x, 1)
-      const parsed = JSON.stringify(this.carts)
-      localStorage.setItem('carts', parsed)
-    },
     checkoutOrder: function () {
       let orderData = {
         customer_name: this.order.customer_name,
@@ -148,7 +146,7 @@ export default {
       axios
         .post('transaction', orderData)
         .then(() => {
-          console.log('data success created')
+          this.$router.push({ path: '/success' })
         })
         .catch((err) => console.log(err))
     }
@@ -158,7 +156,6 @@ export default {
       try {
         this.laundrySelect = JSON.parse(localStorage.getItem('laundrySelect'))
         this.user = JSON.parse(localStorage.getItem('user'))
-        console.log(this.user.id)
       } catch (e) {
         localStorage.removeItem('carts')
       }

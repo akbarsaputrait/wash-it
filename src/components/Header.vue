@@ -61,7 +61,7 @@
                           @click="signOut"
                           class="primary-btn view-card"
                       >
-                        Keluar
+                        Sign Out
                       </a>
                     </div>
                   </div>
