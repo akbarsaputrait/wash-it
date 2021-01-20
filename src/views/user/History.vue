@@ -8,6 +8,7 @@
         <th scope="col">#</th>
         <th scope="col">Laundry Shop Name</th>
         <th scope="col">Order Date</th>
+        <th scope="col">Total Cost</th>
         <th scope="col">Transaction Status / Verify </th>
       </tr>
       </thead>
@@ -16,8 +17,9 @@
         <th scope="row">{{index + 1}}</th>
         <td>{{ transaction.laundry_shop.name }}</td>
         <td>{{ transaction.createdAt }}</td>
+        <td>{{ transaction.transaction_total + transaction.postal_fee + transaction.laundry_shop.price }}</td>
         <td>
-          <b-button @click="changeStatusTransaction">{{transaction.transaction_status}}</b-button>
+          <b-button  @click.prevent="changeStatusTransaction(transaction.id)" class="w-100">{{transaction.transaction_status}}</b-button>
         </td>
       </tr>
 
@@ -43,7 +45,7 @@ export default {
     return {
       isLoading: true,
       userTransactions: [],
-      user: {},
+      user: {}
     }
   },
   created () {
@@ -70,8 +72,20 @@ export default {
       } catch (error) {
         this.$notify('danger', 'Something Bad Happened', error, { duration: 5000 })
       }
+    },
+    async changeStatusTransaction (id) {
+      const con = confirm('you"ve got your laundry ?')
+      if (con === true) {
+        const res = await axios.put('transaction/' + id,{ transaction_status: 'SUCCESS' })
+        if (res) {
+          console.log(res)
+          window.location.reload()
+        } else {
+          console.log('error')
+        }
+      }
     }
-  },
+  }
 
 }
 </script>
