@@ -18,8 +18,14 @@
         <td>{{ transaction.laundry_shop.name }}</td>
         <td>{{ transaction.createdAt }}</td>
         <td>{{ transaction.transaction_total + transaction.postal_fee + transaction.laundry_shop.price }}</td>
-        <td>
-          <b-button  @click.prevent="changeStatusTransaction(transaction.id)" class="w-100">{{transaction.transaction_status}}</b-button>
+        <td v-if="transaction.transaction_status==='SUCCESS'">
+          <b-button variant="success" @click.prevent="changeStatusTransaction(transaction.id)" class="w-100">{{transaction.transaction_status}}</b-button>
+        </td>
+        <td v-if="transaction.transaction_status==='FAILED'">
+          <b-button variant="danger" @click.prevent="changeStatusTransaction(transaction.id)" class="w-100">{{transaction.transaction_status}}</b-button>
+        </td>
+        <td v-if="transaction.transaction_status==='PENDING'">
+          <b-button variant="warning" @click.prevent="changeStatusTransaction(transaction.id)" class="w-100">{{transaction.transaction_status}}</b-button>
         </td>
       </tr>
 
