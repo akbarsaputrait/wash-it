@@ -63,6 +63,7 @@ export default {
                 phone: val.contact_person,
                 address: `${val.address}, ${val.additional_info}`,
                 date: dayjs(val.createdAt).format('DD MMMM YYYY'),
+                total: val.transaction_total,
                 status: val.transaction_status,
                 statusColor: val.transaction_status === 'PENDING' ? 'warning' : 'danger' || val.transaction_status === 'SUCCESS' ? 'success' : 'danger'
               })

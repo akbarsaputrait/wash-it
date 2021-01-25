@@ -82,8 +82,8 @@
                       Courier Name <span>Shayna</span>
                     </li>
                   </ul>
-                  <a href="/history" class="proceed-btn"
-                  >Check Order</a
+                  <router-link to="/history" class="proceed-btn"
+                  >Check Order</router-link
                   >
                 </div>
               </div>
@@ -148,5 +148,3 @@ export default {
   }
 }
 </script>
-
-
